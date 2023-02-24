@@ -1,19 +1,49 @@
 buildscript {
     repositories {
-        google()
+        gradlePluginPortal()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.18.0'
+        if (PUBLISH_TO_PLUGIN_PORTAL.toBoolean()) {
+            classpath "com.gradle.publish:plugin-publish-plugin:1.0.0"
+        } else {
+            classpath 'com.vanniktech:gradle-maven-publish-plugin:0.18.0'
+
+        }
     }
 }
 
 apply plugin: 'groovy'
-apply plugin: "com.vanniktech.maven.publish"
+if (PUBLISH_TO_PLUGIN_PORTAL.toBoolean()) {
+    apply plugin: 'signing'
+    apply plugin: "com.gradle.plugin-publish"
+} else {
+    apply plugin: "com.vanniktech.maven.publish"
+}
 
 java {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
+}
+if (PUBLISH_TO_PLUGIN_PORTAL.toBoolean()) {
+    group = 'io.github.qq549631030'
+    version = VERSION_NAME
+    gradlePlugin {
+        plugins {
+            androidJunkCodePlugin {
+                id = 'io.github.qq549631030.android-junk-code'
+                implementationClass = 'cn.hx.plugin.junkcode.plugin.AndroidJunkCodePlugin'
+                displayName = 'AndroidJunkCode plugin'
+                description = 'Generate junk code for android'
+            }
+        }
+    }
+
+    pluginBundle {
+        website = 'https://github.com/qq549631030/AndroidJunkCode/'
+        vcsUrl = 'https://github.com/qq549631030/AndroidJunkCode/'
+        tags = ['android', 'generate', 'junk', 'code']
+    }
 }
 
 dependencies {
