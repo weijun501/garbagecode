@@ -1,4 +1,4 @@
-package com.gate.junkcode.template
+package com.gate.code.template
 
 class ResTemplate {
 

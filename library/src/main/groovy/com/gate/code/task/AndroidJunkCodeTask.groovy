@@ -1,7 +1,7 @@
-package com.gate.junkcode.task
+package com.gate.code.task
 
-import com.gate.junkcode.ext.JunkCodeConfig
-import com.gate.junkcode.template.ResTemplate
+import com.gate.code.ext.JunkCodeConfig
+import com.gate.code.template.ResTemplate
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec

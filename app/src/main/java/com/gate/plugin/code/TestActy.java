@@ -1,4 +1,4 @@
-package com.gate.plugin.junkcode;
+package com.gate.plugin.code;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import cn.hx.plugin.junkcode.demo.R;
 
 public class TestActy extends AppCompatActivity {
 

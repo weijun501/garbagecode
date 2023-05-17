@@ -1,4 +1,4 @@
-package com.gate.plugin.junkcode.demo
+package com.gate.plugin.code.demo
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

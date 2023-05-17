@@ -75,7 +75,7 @@ android {
 if (PLUGIN_ENABLE.toBoolean()) {
     androidJunkCode {
         def config = {
-            packageBase = "cn.hx.plugin.ui"
+            packageBase = "cn.gate.plugin.ui"
             packageCount = 5
             activityCountPerPackage = 5
             excludeActivityJavaFile = false

@@ -1,4 +1,4 @@
-package com.gate.plugin.junkcode
+package com.gate.plugin.code
 
 import android.app.Application
 import android.content.Context
