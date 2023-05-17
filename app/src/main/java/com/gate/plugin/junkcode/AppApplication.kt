@@ -1,4 +1,4 @@
-package cn.hx.plugin.junkcode.demo
+package com.gate.plugin.junkcode
 
 import android.app.Application
 import android.content.Context

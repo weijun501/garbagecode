@@ -1,10 +1,11 @@
-package cn.hx.plugin.junkcode.task
+package com.gate.junkcode.task
 
-import cn.hx.plugin.junkcode.ext.JunkCodeConfig
-import cn.hx.plugin.junkcode.template.ResTemplate
+import com.gate.junkcode.ext.JunkCodeConfig
+import com.gate.junkcode.template.ResTemplate
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
+import com.squareup.javapoet.ParameterSpec
 import com.squareup.javapoet.TypeSpec
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -21,8 +22,8 @@ class AndroidJunkCodeTask extends DefaultTask {
 
     static def random = new Random()
 
-    static abc = "abcdefghijklmnopqrstuvwxyz".toCharArray()
-    static color = "0123456789abcdef".toCharArray()
+    static abc = "abcdefghijklmnopqrstuvwxyzvwxghijklmnlmn".toCharArray()
+    static color = "0123456789abcdef3456789cde".toCharArray()
 
     @Nested
     JunkCodeConfig config
@@ -138,22 +139,29 @@ class AndroidJunkCodeTask extends DefaultTask {
      * @param activityPreName
      */
     void generateActivity(String packageName, String activityPreName) {
-        def className = activityPreName.capitalize() + "Activity"
-        def layoutName = "${config.resPrefix.toLowerCase()}${packageName.replace(".", "_")}_activity_${activityPreName}"
+        def className = activityPreName.capitalize() + "Acty"
+//        def layoutName = "${config.resPrefix.toLowerCase()}${packageName.replace(".", "_")}_activity_${activityPreName}"
+        def layoutName = "acty_${activityPreName}"
         generateLayout(layoutName)
         if (!config.excludeActivityJavaFile) {
             def typeBuilder = TypeSpec.classBuilder(className)
-            typeBuilder.superclass(ClassName.get("android.app", "Activity"))
+            typeBuilder.superclass(ClassName.get("androidx.appcompat.app", "AppCompatActivity"))
             typeBuilder.addModifiers(Modifier.PUBLIC)
             //onCreate方法
-            def bundleClassName = ClassName.get("android.os", "Bundle")
+            def bundle = ClassName.get("android.os", "Bundle")
+            def nullable  = ClassName.get("androidx.annotation", "Nullable")
+            ParameterSpec savedInstanceState = ParameterSpec.builder(bundle, "savedInstanceState")
+                    .addAnnotation(nullable)
+                    .build()
+
             typeBuilder.addMethod(MethodSpec.methodBuilder("onCreate")
                     .addAnnotation(Override.class)
                     .addModifiers(Modifier.PROTECTED)
-                    .addParameter(bundleClassName, "savedInstanceState")
+                    .addParameter(savedInstanceState)
                     .addStatement("super.onCreate(savedInstanceState)")
                     .addStatement("setContentView(\$T.layout.${layoutName})", ClassName.get(namespace, "R"))
                     .build())
+
             //其它方法
             for (int j = 0; j < config.methodCountPerClass; j++) {
                 def methodName = generateName(j)

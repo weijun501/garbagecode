@@ -1,4 +1,4 @@
-package cn.hx.plugin.junkcode.template
+package com.gate.junkcode.template
 
 class ResTemplate {
 

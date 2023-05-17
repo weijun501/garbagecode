@@ -1,7 +1,8 @@
-package cn.hx.plugin.junkcode.demo
+package com.gate.plugin.junkcode
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import cn.hx.plugin.junkcode.demo.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

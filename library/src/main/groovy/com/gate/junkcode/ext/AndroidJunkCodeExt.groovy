@@ -1,4 +1,4 @@
-package cn.hx.plugin.junkcode.ext
+package com.gate.junkcode.ext
 
 import org.gradle.api.Action
 import org.gradle.api.NamedDomainObjectContainer

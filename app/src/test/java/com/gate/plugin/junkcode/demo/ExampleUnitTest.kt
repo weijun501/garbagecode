@@ -1,4 +1,4 @@
-package cn.hx.plugin.junkcode.demo
+package com.gate.plugin.junkcode.demo
 
 import org.junit.Test
 

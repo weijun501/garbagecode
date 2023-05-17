@@ -1,8 +1,8 @@
-package cn.hx.plugin.junkcode.plugin
+package com.gate.junkcode.plugin
 
-import cn.hx.plugin.junkcode.ext.AndroidJunkCodeExt
-import cn.hx.plugin.junkcode.ext.JunkCodeConfig
-import cn.hx.plugin.junkcode.task.AndroidJunkCodeTask
+import com.gate.junkcode.ext.AndroidJunkCodeExt
+import com.gate.junkcode.ext.JunkCodeConfig
+import com.gate.junkcode.task.AndroidJunkCodeTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
